@@ -70,7 +70,7 @@ body[data-s="0"] .flyer{animation:fly 11s ease-in-out 1.2s infinite}
 
 /* ===== screens ===== */
 #stage{position:fixed;inset:0;z-index:4}
-.screen{position:absolute;inset:0;display:flex;justify-content:center;padding:calc(env(safe-area-inset-top) + 76px) 16px calc(env(safe-area-inset-bottom) + 18px);overflow-y:auto;overflow-x:hidden;scrollbar-width:none;
+.screen{position:absolute;inset:0;display:flex;justify-content:center;padding:calc(env(safe-area-inset-top) + 76px) 16px 0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;
   opacity:0;visibility:hidden;pointer-events:none}
 .screen::-webkit-scrollbar{display:none}
 .screen.active{visibility:visible;pointer-events:auto;animation:inF .5s var(--ease) both}
@@ -131,7 +131,14 @@ em{font-style:normal}
 .btn.ghost::after{display:none}
 .btn svg{width:20px;height:20px;flex:none;transition:transform .3s}
 .btn:hover svg{transform:translateX(3px)}
-.cta{margin-top:auto;padding-top:16px;display:flex;flex-direction:column;gap:12px}
+.cta{margin:auto -16px 0;position:sticky;bottom:0;z-index:5;padding:26px 16px calc(env(safe-area-inset-bottom) + 14px);background:linear-gradient(180deg,rgba(26,11,46,0),rgba(26,11,46,.92) 40%);display:flex;flex-direction:column;gap:10px}
+.btn.sm{padding:12px 16px;font-size:15px}
+.cta .hint{margin:0 2px;text-align:center}
+.eyebrow{margin:0 0 8px;font:600 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.tail{margin:6px 0 18px;display:flex;flex-direction:column;gap:10px}
+.tail .fine{margin:0;text-align:left;font-size:12px;opacity:.8}
+.field.bad{border-color:#ff7a8a;box-shadow:0 0 0 3px rgba(255,122,138,.4)}
+.perr{display:none;color:#ffb3bd;font-size:13px;margin:-2px 2px 0}.perr.show{display:block}
 .rip{position:absolute;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.65),rgba(255,255,255,0) 70%);transform:translate(-50%,-50%) scale(0);animation:rip .7s ease-out forwards}
 @keyframes rip{to{transform:translate(-50%,-50%) scale(1);opacity:0}}
 /* spotlight under finger / mouse */
@@ -275,6 +282,7 @@ em{font-style:normal}
 
   <section class="screen" data-i="1">
     <div class="wrap">
+      <div class="eyebrow rv" style="--i:0" data-step="1"></div>
       <h2 data-split="q1"></h2>
       <p class="sub rv" style="--i:3" data-k="q1s"></p>
       <div class="grid" id="gVibe"></div>
@@ -283,11 +291,12 @@ em{font-style:normal}
 
   <section class="screen" data-i="2">
     <div class="wrap">
+      <div class="eyebrow rv" style="--i:0" data-step="2"></div>
       <h2 data-split="q2"></h2>
       <p class="sub rv" style="--i:3" data-k="q2s"></p>
       <div class="grid" id="gDest"></div>
       <div class="cta">
-        <button class="btn ghost spot rv" style="--i:8" id="anyDest" data-k="any"></button>
+        <button class="btn ghost sm spot" id="anyDest" data-k="any"></button>
         <button class="btn spot" id="dNext" disabled><span data-k="next"></span> <svg><use href="#i-arrow"/></svg></button>
       </div>
     </div>
@@ -295,15 +304,18 @@ em{font-style:normal}
 
   <section class="screen" data-i="3">
     <div class="wrap">
+      <div class="eyebrow rv" style="--i:0" data-step="3"></div>
       <h2 data-split="q3"></h2>
       <p class="sub rv" style="--i:3" data-k="q3s"></p>
       <div class="grp rv" style="--i:4"><h3 data-k="when"></h3><div class="chips" id="cWhen"></div></div>
       <div class="grp rv" style="--i:5"><h3 data-k="nights"></h3><div class="chips" id="cNights"></div></div>
+      <div class="cta"><p class="hint" id="whenHint" data-k="whenHint"></p><button class="btn spot" id="tNext" disabled><span data-k="next"></span> <svg><use href="#i-arrow"/></svg></button></div>
     </div>
   </section>
 
   <section class="screen" data-i="4">
     <div class="wrap">
+      <div class="eyebrow rv" style="--i:0" data-step="4"></div>
       <h2 data-split="q4"></h2>
       <p class="sub rv" style="--i:3" data-k="q4s"></p>
       <div class="glass rv" style="--i:4">
@@ -313,12 +325,13 @@ em{font-style:normal}
           <div class="step"><button data-st="k-">−</button><output id="oK">0</output><button data-st="k+">+</button></div></div>
       </div>
       <div class="ages" id="ages"><h3 data-k="agesT"></h3><div class="chips" id="cAges"></div></div>
-      <div class="cta"><button class="btn spot rv" style="--i:6" id="wNext"><span data-k="next"></span> <svg><use href="#i-arrow"/></svg></button></div>
+      <div class="cta"><button class="btn spot" id="wNext"><span data-k="next"></span> <svg><use href="#i-arrow"/></svg></button></div>
     </div>
   </section>
 
   <section class="screen" data-i="5">
     <div class="wrap">
+      <div class="eyebrow rv" style="--i:0" data-step="5"></div>
       <h2 data-split="q5"></h2>
       <p class="sub rv" style="--i:3" data-k="q5s"></p>
       <div id="gBud"></div>
@@ -328,6 +341,7 @@ em{font-style:normal}
 
   <section class="screen" data-i="6">
     <div class="wrap">
+      <div class="eyebrow rv" style="--i:0" data-step="6"></div>
       <h2 data-split="q6"></h2>
       <p class="sub rv" style="--i:3" data-k="q6s"></p>
       <div id="gPass"></div>
@@ -338,7 +352,6 @@ em{font-style:normal}
     <div class="wrap">
       <h2 data-split="q7"></h2>
       <p class="sub rv" style="--i:4" data-k="q7s"></p>
-      <input class="field rv" style="--i:5" id="name" type="text" autocomplete="given-name" maxlength="40">
       <div class="passwrap">
         <div class="pass" id="pass">
           <div class="pass-top">
@@ -359,14 +372,19 @@ em{font-style:normal}
           <div class="stamp" data-k="stamp"></div>
         </div>
       </div>
+      <input class="field rv" style="--i:6" id="name" type="text" autocomplete="given-name" maxlength="40">
       <div class="note" id="note"></div>
-      <div class="cta" style="margin-top:0">
-        <div class="halo rv" style="--i:7"><a class="btn spot" id="tgBtn" href="#" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg> <span data-k="tg"></span></a></div>
-        <button class="btn ghost spot rv" style="--i:8" id="cbBtn" data-k="cb"></button>
-        <div class="phonebox" id="phoneBox"><input class="field" id="phone" type="tel" inputmode="tel" placeholder="+998 __ ___ __ __" autocomplete="tel"><button class="btn spot" id="phoneSend" data-k="send"></button></div>
+      <div class="tail">
+        <a class="tel rv" style="--i:7" id="telLink" href="#"><span data-k="telOr"></span> <b id="telView"></b></a>
+        <p class="fine" id="tgFb"></p>
+        <p class="fine" data-k="fine7"></p>
+      </div>
+      <div class="cta">
+        <div class="halo"><a class="btn spot" id="tgBtn" href="#" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg> <span data-k="tg"></span></a></div>
+        <button class="btn ghost sm spot" id="cbBtn" data-k="cb"></button>
+        <div class="phonebox" id="phoneBox"><input class="field" id="phone" type="tel" inputmode="tel" placeholder="+998 90 123 45 67" autocomplete="tel"><button class="btn spot" id="phoneSend" data-k="send"></button></div>
+        <div class="perr" id="phoneErr"></div>
         <div class="thanks" id="thanks" data-k="thanks"></div>
-        <a class="tel rv" style="--i:9" id="telLink" href="#"><span data-k="telOr"></span> <b id="telView"></b></a>
-        <p class="fine rv" style="--i:10" data-k="fine7"></p>
       </div>
     </div>
   </section>
@@ -404,20 +422,22 @@ const TXT = {
 ru:{
  pill:'Туры из Ташкента',
  h1:'Подберём тур, который <em>Вам подойдёт</em>',
- intro:'Ответьте, пожалуйста, на 6 коротких вопросов. Мы подготовим варианты с ценами и отправим их Вам в Telegram.',
+ intro:'Ответьте на 6 коротких вопросов. Мы подготовим варианты с ценами и отправим их Вам в Telegram.',
  start:'Подобрать тур', fine0:'Это займёт около минуты',
- q1:'Какой отдых Вам по душе?', q1s:'Выберите, пожалуйста, один вариант.',
+ q1:'Какой отдых Вам по душе?', q1s:'Выберите один вариант.',
  q2:'Куда бы Вы хотели поехать?', q2s:'Можно выбрать до двух направлений. Цены указаны из расчёта на одного человека, если не указано иное.',
  any:'Пока не определились, подскажите', next:'Далее',
  q3:'Когда планируете поездку?', q3s:'Вылеты возможны в ближайшие недели.', when:'Дата вылета', nights:'Количество ночей',
- q4:'Кто поедет?', q4s:'От состава зависит стоимость тура.', adults:'Взрослые', adultsS:'от 12 лет', kids:'Дети', kidsS:'до 12 лет', agesT:'Возраст детей',
+ q4:'Кто поедет?', q4s:'От состава зависит стоимость тура.', adults:'Взрослые', adultsS:'от 18 лет', kids:'Дети', kidsS:'до 17 лет', agesT:'Возраст детей',
  q5:'Какой бюджет на одного человека?', q5s:'Обычно в стоимость входят перелёт, отель, питание и трансфер.',
  q6:'Есть ли у Вас загранпаспорт?', q6s:'Это последний вопрос.',
  q7:'Благодарим Вас, заявка готова', q7s:'Нажмите кнопку ниже, и наш менеджер ответит Вам в Telegram с вариантами и точными ценами.',
  namePh:'Как к Вам обращаться? (по желанию)',
  pTitle:'Посадочный талон · TOURisME', tas:'Ташкент', pPax:'Пассажиры', pWhen:'Вылет', pNights:'Ночей', pVibe:'Отдых', pBud:'Бюджет на человека', stamp:'Заявка<br>готова', any2:'Подберём вместе',
- tg:'Написать менеджеру в Telegram', cb:'Прошу мне перезвонить', send:'Отправить', thanks:'Благодарим Вас! Мы обязательно перезвоним.', telOr:'Или позвоните нам сами:',
- fine7:'Цены ориентировочные. Точную стоимость подтвердит менеджер.',
+ tg:'Написать в Telegram', cb:'Перезвоните мне', send:'Отправить', thanks:'Благодарим Вас! Мы обязательно перезвоним.', telOr:'Или позвоните нам сами:',
+ fine7:'Цены ориентировочные. Точную стоимость подтвердит менеджер. Нажимая кнопку, Вы соглашаетесь на обработку данных для подбора тура.',
+ step:n=>'Вопрос '+n+' из 6', whenHint:'Выберите дату вылета и количество ночей', phoneErr:'Введите номер в формате +998 90 123 45 67',
+ tgFb:c=>'Если Telegram не открылся, напишите @'+CFG.TG+' и назовите код заявки '+c+'.',
  adult1:'взрослый', adultN:'взрослых', kid1:'ребёнок', kid2:'ребёнка', kidN:'детей', plus:' + ',
  hint:(n,p)=>'По направлению «'+n+'» цены начинаются '+p+'.',
  low:(m,s,p)=>'Указанный бюджет немного ниже стоимости по выбранному направлению (от $'+m+' на человека). Менеджер подберёт ближайшие варианты, например '+s+' '+p+'.',
@@ -427,20 +447,22 @@ ru:{
 uz:{
  pill:'Toshkentdan turlar',
  h1:'Sizga <em>mos sayohatni</em> tanlab beramiz',
- intro:'Iltimos, 6 ta qisqa savolga javob bering. Biz narxlari bilan variantlarni tayyorlab, Telegram orqali yuboramiz.',
+ intro:'6 ta qisqa savolga javob bering. Biz narxlari bilan variantlarni tayyorlab, Telegram orqali yuboramiz.',
  start:'Turni tanlash', fine0:'Taxminan bir daqiqa vaqt oladi',
- q1:'Qanday dam olishni xohlaysiz?', q1s:'Iltimos, bitta variantni tanlang.',
+ q1:'Qanday dam olishni xohlaysiz?', q1s:'Bitta variantni tanlang.',
  q2:'Qayerga bormoqchisiz?', q2s:'Ikkitagacha yoʻnalish tanlashingiz mumkin. Narxlar, agar boshqacha koʻrsatilmagan boʻlsa, bir kishi uchun.',
  any:'Hali aniq emas, tavsiya bering', next:'Davom etish',
  q3:'Qachon safar qilmoqchisiz?', q3s:'Uchishlar yaqin haftalarda mumkin.', when:'Uchish sanasi', nights:'Necha kecha',
- q4:'Kimlar boradi?', q4s:'Tur narxi tarkibga bogʻliq.', adults:'Kattalar', adultsS:'12 yoshdan', kids:'Bolalar', kidsS:'12 yoshgacha', agesT:'Bolalar yoshi',
+ q4:'Kimlar boradi?', q4s:'Tur narxi tarkibga bogʻliq.', adults:'Kattalar', adultsS:'18 yoshdan', kids:'Bolalar', kidsS:'17 yoshgacha', agesT:'Bolalar yoshi',
  q5:'Bir kishi uchun byudjet qancha?', q5s:'Odatda narxga parvoz, mehmonxona, ovqat va transfer kiradi.',
  q6:'Xorijiy pasportingiz bormi?', q6s:'Bu oxirgi savol.',
  q7:'Rahmat, arizangiz tayyor', q7s:'Quyidagi tugmani bosing — menejerimiz Telegram orqali variantlar va aniq narxlar bilan javob beradi.',
  namePh:'Ismingiz? (ixtiyoriy)',
  pTitle:'Bort talon · TOURisME', tas:'Toshkent', pPax:'Yoʻlovchilar', pWhen:'Uchish', pNights:'Kecha', pVibe:'Dam olish', pBud:'Bir kishi uchun byudjet', stamp:'Ariza<br>tayyor', any2:'Birga tanlaymiz',
- tg:'Menejerga Telegramda yozish', cb:'Iltimos, menga qoʻngʻiroq qiling', send:'Yuborish', thanks:'Rahmat! Albatta qoʻngʻiroq qilamiz.', telOr:'Yoki oʻzingiz qoʻngʻiroq qiling:',
- fine7:'Narxlar taxminiy. Aniq narxni menejer tasdiqlaydi.',
+ tg:'Telegramda yozish', cb:'Menga qoʻngʻiroq qiling', send:'Yuborish', thanks:'Rahmat! Albatta qoʻngʻiroq qilamiz.', telOr:'Yoki oʻzingiz qoʻngʻiroq qiling:',
+ fine7:'Narxlar taxminiy. Aniq narxni menejer tasdiqlaydi. Tugmani bosish orqali Siz tur tanlash uchun maʼlumotlarni qayta ishlashga rozilik bildirasiz.',
+ step:n=>n+'-savol, jami 6 ta', whenHint:'Uchish sanasi va kechalar sonini tanlang', phoneErr:'Raqamni +998 90 123 45 67 koʻrinishida kiriting',
+ tgFb:c=>'Telegram ochilmasa, @'+CFG.TG+' ga yozing va ariza kodini ayting: '+c+'.',
  adult1:'kattalar', adultN:'kattalar', kid1:'bola', kid2:'bola', kidN:'bola', plus:' + ',
  hint:(n,p)=>'«'+n+'» yoʻnalishida narxlar '+p+' boshlanadi.',
  low:(m,s,p)=>'Koʻrsatilgan byudjet tanlangan yoʻnalish narxidan biroz past (bir kishiga $'+m+' dan). Menejer eng yaqin variantlarni tanlab beradi, masalan, '+s+' '+p+'.',
@@ -530,8 +552,9 @@ function splitWords(el, html){
 }
 function applyText(){
   $$('[data-k]').forEach(el=>{ el.innerHTML = T(el.dataset.k); });
+  $$('[data-step]').forEach(el=>{ el.textContent = T('step')(el.dataset.step); });
   $$('[data-split]').forEach(el=>splitWords(el, T(el.dataset.split)));
-  $('#name').placeholder = T('namePh');
+  $('#name').placeholder = T('namePh'); $('#phoneErr').textContent = T('phoneErr');
   document.documentElement.lang = lang;
   $('#lang').dataset.l = lang;
 }
@@ -605,6 +628,7 @@ function buildAll(){
   $('#gPass').innerHTML = PASS.map((p,i)=>'<button class="opt spot plain rv'+(S.passport===p.id?' sel':'')+'" style="--i:'+(i+4)+'" data-p="'+p.id+'">'+lb(p)+'</button>').join('');
   $('#telView').textContent = CFG.PHONE_VIEW; $('#telLink').href = 'tel:'+CFG.PHONE_TEL;
   if(S.vibe) renderDests();
+  whenBtn();
 }
 function renderDests(){
   const list = D.filter(d => S.vibe==='any' || d.t.includes(S.vibe)).sort((a,b)=>a.pp-b.pp);
@@ -642,8 +666,8 @@ stage.addEventListener('click', e => {
   }
   if(t.id === 'dNext'){ buzz(); go(3); return; }
   if(t.id === 'anyDest'){ buzz(); S.dests = ['any']; go(3); return; }
-  if(t.dataset.when){ buzz(); S.when = t.dataset.when; sel($('#cWhen'),'data-when',S.when); if(S.nights) setTimeout(()=>go(4),420); return; }
-  if(t.dataset.nights){ buzz(); S.nights = t.dataset.nights; sel($('#cNights'),'data-nights',S.nights); if(S.when) setTimeout(()=>go(4),420); return; }
+  if(t.dataset.when){ buzz(); S.when = t.dataset.when; sel($('#cWhen'),'data-when',S.when); whenBtn(); return; }
+  if(t.dataset.nights){ buzz(); S.nights = t.dataset.nights; sel($('#cNights'),'data-nights',S.nights); whenBtn(); return; }
   if(t.dataset.st){
     buzz(); const k = t.dataset.st;
     if(k==='a-') S.adults = Math.max(1,S.adults-1); if(k==='a+') S.adults = Math.min(6,S.adults+1);
@@ -654,20 +678,27 @@ stage.addEventListener('click', e => {
     return;
   }
   if(t.dataset.age){ buzz(); const a = t.dataset.age, i = S.ages.indexOf(a); if(i>-1) S.ages.splice(i,1); else S.ages.push(a); t.classList.toggle('sel'); return; }
+  if(t.id === 'tNext'){ buzz(); go(4); return; }
   if(t.id === 'wNext'){ buzz(); go(5); updateHint(); return; }
-  if(t.dataset.b){ buzz(); S.budget = t.dataset.b; sel($('#gBud'),'data-b',S.budget); fireLead(); setTimeout(()=>go(6),520); return; }
-  if(t.dataset.p){ buzz(); S.passport = t.dataset.p; sel($('#gPass'),'data-p',S.passport); setTimeout(()=>go(7),520); return; }
+  if(t.dataset.b){ buzz(); S.budget = t.dataset.b; sel($('#gBud'),'data-b',S.budget); fireLead(); setTimeout(()=>go(6),650); return; }
+  if(t.dataset.p){ buzz(); S.passport = t.dataset.p; sel($('#gPass'),'data-p',S.passport); setTimeout(()=>go(7),650); return; }
   if(t.id === 'cbBtn'){ buzz(); $('#phoneBox').classList.add('show'); t.style.display='none'; $('#phone').focus(); return; }
   if(t.id === 'phoneSend'){
-    const v = $('#phone').value.replace(/[^\d+]/g,''); if(v.replace(/\D/g,'').length < 9){ $('#phone').focus(); return; }
-    S.phone = v; touch(); track('Contact',{method:'callback'}); $('#phoneBox').classList.remove('show'); $('#thanks').classList.add('show'); buzz(20); return;
+    const dg = $('#phone').value.replace(/\D/g,''); if(!(dg.length===12 && dg.startsWith('998'))){ $('#phone').classList.add('bad'); $('#phoneErr').classList.add('show'); $('#phone').focus(); return; }
+    S.phone = '+'+dg; touch(); track('Contact',{method:'callback'}); $('#phoneBox').classList.remove('show'); $('#phoneErr').classList.remove('show'); $('#thanks').classList.add('show'); buzz(20); return;
   }
 });
 $('#lang').addEventListener('click', e => { const b = e.target.closest('button'); if(b && b.dataset.l !== lang) setLang(b.dataset.l); });
+function whenBtn(){ const ok = !!(S.when && S.nights); $('#tNext').disabled = !ok; $('#whenHint').style.display = ok ? 'none' : ''; }
 function updateHint(){
   const d = byId(D,S.dests[0]);
   $('#bHint').textContent = d ? T('hint')(lb(d), priceStr(d)) : '';
 }
+$('#phone').addEventListener('input', e => {
+  let d = e.target.value.replace(/\D/g,''); if(d.length<=3) d = '998'; else if(!d.startsWith('998')) d = '998'+d;
+  d = d.slice(0,12); const g = [d.slice(0,3),d.slice(3,5),d.slice(5,8),d.slice(8,10),d.slice(10,12)].filter(Boolean);
+  e.target.value = '+'+g.join(' '); e.target.classList.remove('bad'); $('#phoneErr').classList.remove('show'); });
+$('#phone').addEventListener('focus', e => { if(!e.target.value) e.target.value = '+998 '; });
 $('#name').addEventListener('input', e => { S.name = e.target.value.trim(); setTg(); });
 
 /* ---------- Lead ---------- */
@@ -699,7 +730,7 @@ function buildPass(){
   $('#pNightsV').textContent = S.nights ? T('nightsU')(lb(byId(NIGHTS,S.nights))) : '—';
   $('#pVibeV').textContent = S.vibe ? lb(byId(VIBES,S.vibe).short) : '—';
   const b = byId(BUD,S.budget); $('#pBudV').textContent = b ? lb(b) : '—';
-  $('#pId').textContent = '№ '+LEAD_ID;
+  $('#pId').textContent = '№ '+LEAD_ID; $('#tgFb').textContent = T('tgFb')(LEAD_ID);
   const note = $('#note');
   if(b && b.mid && ds.length){
     const min = Math.min(...ds.map(d=>d.pp));
